@@ -1,0 +1,42 @@
+{
+  "name": "Compendium",
+  "version": "0.0.1",
+  "description": "Simple boilerplate for editor settings.",
+  "main": "index.js",
+  "repository": {
+    "url": "https://",
+    "type": "git"
+  },
+  "scripts": {
+    "start": "nodemon index.js --ext js,css",
+    "test": "NODE_ENV=production nodemon index.js",
+    "build": "NODE_ENV=production node index.js",
+    "gulp": "gulp",
+    "lint": "./node_modules/.bin/eslint --init"
+  },
+  "author": "electrico",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-uglify": "^3.0.2",
+    "nodemon": "^2.0.4",
+    "stylelint-config-prettier": "^6.0.0",
+    "stylelint-prettier": "^1.1.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "express": "^4.17.1",
+    "gulp-cli": "^2.2.0",
+    "node-fetch": "^2.6.0",
+    "pug": "^2.0.4",
+    "request": "^2.88.0",
+    "unirest": "^0.6.0"
+  }
+}

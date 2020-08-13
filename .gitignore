@@ -1,0 +1,6 @@
+# Folder view configuration files
+.DS_Store
+.vscode
+# Application specific files
+.env
+node_modules
