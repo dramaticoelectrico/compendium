@@ -1,5 +1,5 @@
 {
-  "name": "Compendium",
+  "name": "compendium",
   "version": "0.0.1",
   "description": "Simple boilerplate for editor settings.",
   "main": "index.js",
