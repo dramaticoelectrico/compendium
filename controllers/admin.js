@@ -1,5 +1,5 @@
-const globalCSS = require('../utils/styles')
-const ejsUtils = require('../utils/ejsUtils')
+const Styles = require('../utils/globalStyles')
+const Utils = require('../utils/templateUtils')
 const User = require('../models/user')
 const Gallery = require('../models/gallery')
 const Tag = require('../models/tag')
@@ -65,8 +65,8 @@ exports.getAdminPage = async (req, res, next) => {
   res.render('admin', {
     title: 'Admin: Items',
     page: 'home',
-    css: globalCSS,
-    templateFn: ejsUtils.getImages,
+    css: Styles.globalCSS,
+    templateFn: Utils.getImages,
     user,
     gallery,
     tags,
@@ -80,7 +80,7 @@ exports.getAddItem = async (req, res, next) => {
   res.render('admin', {
     title: 'Admin: Add Item ',
     page: 'create',
-    css: globalCSS,
+    css: Styles.globalCSS,
     user,
     tags,
   })
@@ -92,7 +92,7 @@ exports.getAddTag = async (req, res, next) => {
   res.render('admin', {
     title: 'Admin: add new Category Tag',
     page: 'tag',
-    css: globalCSS,
+    css: Styles.globalCSS,
     user,
     tag,
   })
@@ -107,7 +107,7 @@ exports.getEditPage = async (req, res, next) => {
   res.render('admin', {
     title: 'Admin: Edit Item ' + gallery.title,
     page: 'edit',
-    css: globalCSS,
+    css: Styles.globalCSS,
     gallery,
     user,
     tags,
@@ -122,7 +122,7 @@ exports.getDeleteItem = async (req, res, next) => {
   res.render('admin', {
     title: 'Admin: Delete Item ' + gallery.title,
     page: 'delete',
-    css: globalCSS,
+    css: Styles.globalCSS,
     gallery,
     user,
   })

@@ -1,4 +1,4 @@
-const globalCSS = require('../utils/styles')
+const Styles = require('../utils/globalStyles')
 const User = require('../models/user')
 const { registerUser, loginUser } = require('../utils/validation')
 const bcrypt = require('bcrypt')
@@ -17,7 +17,7 @@ exports.postRegisterRoute = async (req, res) => {
   if (isValid) {
     res.status(200).render('register', {
       title: 'Error',
-      css: globalCSS,
+      css: Styles.globalCSS,
       success: false,
       error: isValid.details[0].message,
     })
@@ -26,7 +26,7 @@ exports.postRegisterRoute = async (req, res) => {
     if (emailExhists) {
       return res.status(200).render('register', {
         title: 'Error',
-        css: globalCSS,
+        css: Styles.globalCSS,
         success: false,
         error: 'User ' + req.body.email + ' already exhists',
       })
@@ -62,7 +62,7 @@ exports.postSignInRoute = async (req, res) => {
       // TODO: ERROR HANDLE ON PAGE
       return res.status(400).render('signin', {
         title: 'Admin: ERROR',
-        css: globalCSS,
+        css: Styles.globalCSS,
         error: 'Sorry email address ' + email + " isn't in here",
       })
     } else {
@@ -70,7 +70,7 @@ exports.postSignInRoute = async (req, res) => {
       if (!matchPwd) {
         return res.status(400).render('signin', {
           title: 'Admin: ERROR',
-          css: globalCSS,
+          css: Styles.globalCSS,
           error: 'Sorry password is wrong. Please slow down and relax.',
         })
       } else {

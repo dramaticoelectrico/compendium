@@ -1,5 +1,4 @@
 const Gallery = require('../models/gallery')
-// const globalCSS = require('../utils/styles')
 const Utils = require('../utils/templateUtils')
 const Styles = require('../utils/globalStyles')
 exports.getHomePage = async (req, res, next) => {
