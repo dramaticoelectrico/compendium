@@ -1,9 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const Styles = require('../utils/globalStyles')
+const homePageController = require('../controllers/home')
 
-router.get('/', (req, res) => {
-  res.render('index', { title: 'Express Start', css: Styles.globalCSS })
-})
+router.get('/', homePageController.getHomePage)
 
 module.exports = router

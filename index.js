@@ -14,7 +14,7 @@ mongoose.connect(
 )
 // Routes
 const home = require('./routes/home')
-const submit = require('./routes/submit')
+//const submit = require('./routes/submit')
 const errorHandler = require('./middleware/error')
 
 const app = express()
@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.use(home)
-app.use(submit)
+//app.use(submit)
 app.use(errorHandler)
 
 const port = process.env.PORT || 8080

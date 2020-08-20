@@ -6,7 +6,7 @@ exports.getHomePage = async (req, res, next) => {
     const gallery = await Gallery.find()
     const user =
       req.headers.cookie && decodeURI(req.headers.cookie.split('name=')[1])
-    res.render('gallery', {
+    res.render('home', {
       title: 'Compendium Pendulum: Gallery',
       css: Styles.globalCSS,
       templateFn: Utils.getImages,

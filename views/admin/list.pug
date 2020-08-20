@@ -1,0 +1,11 @@
+extends tmpl.pug
+
+block main
+    h1 Admin page #{title}
+    figure
+        img(sizes="(min-width: 1140px) 25vw, (min-width:500px) 50vw, 100vw"
+        srcset="<%= renderBreakpoints(item.image.breakpoints) %>"
+        src="<%= item.image.secure_url %>"
+        alt="<%= item.description %>")
+        figcaption
+            #{item.title}
