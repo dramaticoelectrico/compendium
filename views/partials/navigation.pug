@@ -1,0 +1,12 @@
+nav
+    ul
+    if locals.user
+        li Hello #{locals.user} !!!!
+        li
+            a(href="/") Gallery
+        li
+            a(href="/admin") Administrate
+        li
+            a(href="/logout") Logout
+    else 
+        li(href="/auth/signin") Sign in

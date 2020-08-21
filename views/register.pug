@@ -1,0 +1,21 @@
+extends tmpl.pug
+
+block main
+    h1 Register to get in
+    if locals.success
+        h2= Hello #{title}
+    else
+        h2= #{title}
+        div.error(aria-prompt="alert") #{locals.error}
+    form(action="/auth/register" method="post")
+      fieldset
+        label(for="name") Name
+        input#name(type="text" name="name")
+      fieldset
+        label(for="email") email
+        input#email(type="text" name="email")
+      fieldset
+        label(for="password") Passords
+        input#password(type="password" name="password")
+      button(type="submit") Enter
+    

@@ -12,15 +12,20 @@ mongoose.connect(
     console.log('connected to DB')
   }
 )
+const app = express()
+app.set('views', [
+  path.join(__dirname, 'views'),
+  path.join(__dirname, 'views/admin/'),
+])
+app.set('view engine', 'pug')
+
 // Routes
+const signIn = require('./routes/authorize')
+const adminPages = require('./routes/admin')
 const home = require('./routes/home')
-//const submit = require('./routes/submit')
+
 const errorHandler = require('./middleware/error')
 
-const app = express()
-
-app.set('views', path.join(__dirname, 'views'))
-app.set('view engine', 'pug')
 app.use(cookieParser())
 app.use(
   express.static(
@@ -33,8 +38,10 @@ app.use(
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+app.use(signIn)
+app.use(adminPages)
 app.use(home)
-//app.use(submit)
+
 app.use(errorHandler)
 
 const port = process.env.PORT || 8080

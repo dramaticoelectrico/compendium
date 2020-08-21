@@ -62,7 +62,7 @@ exports.getAdminPage = async (req, res, next) => {
   const gallery = await dbGallery
   const user = getUser.name
 
-  res.render('admin', {
+  res.render('list', {
     title: 'Admin: Items',
     page: 'home',
     css: Styles.globalCSS,
@@ -77,7 +77,7 @@ exports.getAddItem = async (req, res, next) => {
   const getUser = await User.findById(req.user._id)
   const tags = await Tag.find()
   const user = getUser.name
-  res.render('admin', {
+  res.render('admin/add', {
     title: 'Admin: Add Item ',
     page: 'create',
     css: Styles.globalCSS,
@@ -89,7 +89,7 @@ exports.getAddTag = async (req, res, next) => {
   const getUser = await User.findById(req.user._id)
   const user = getUser.name
   const tag = await Tag.find()
-  res.render('admin', {
+  res.render('admin/tag', {
     title: 'Admin: add new Category Tag',
     page: 'tag',
     css: Styles.globalCSS,
@@ -104,7 +104,7 @@ exports.getEditPage = async (req, res, next) => {
   const tags = await Tag.find()
   const getUser = await User.findById(req.user._id)
   const user = getUser.name
-  res.render('admin', {
+  res.render('admin/edit', {
     title: 'Admin: Edit Item ' + gallery.title,
     page: 'edit',
     css: Styles.globalCSS,
@@ -119,7 +119,7 @@ exports.getDeleteItem = async (req, res, next) => {
   const gallery = await Gallery.findById(itemid)
   const getUser = await User.findById(req.user._id)
   const user = getUser.name
-  res.render('admin', {
+  res.render('admin/delete', {
     title: 'Admin: Delete Item ' + gallery.title,
     page: 'delete',
     css: Styles.globalCSS,

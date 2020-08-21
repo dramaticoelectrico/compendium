@@ -9,7 +9,10 @@ exports.getRegisterRoute = (req, res) => {
   res.render('register', { title: 'Register: As a Concept', css: globalCSS })
 }
 exports.getSignInRoute = (req, res) => {
-  res.render('signin', { title: 'Sign in to Compendium', css: globalCSS })
+  res.render('signin', {
+    title: 'Sign in to Compendium',
+    css: Styles.globalCSS,
+  })
 }
 // POST ROUTS
 exports.postRegisterRoute = async (req, res) => {
@@ -54,13 +57,17 @@ exports.postSignInRoute = async (req, res) => {
   const isValid = await loginUser(req.body)
   const { password, email } = req.body
   if (isValid) {
-    return res.status(400).send(isValid.details[0].message)
+    return res.status(401).render('signin', {
+      title: 'ERROR!',
+      css: Styles.globalCSS,
+      error: isValid.details[0].message,
+    })
   } else {
     // Find the user from DB
     const foundUser = await User.findOne({ email: email })
     if (!foundUser) {
       // TODO: ERROR HANDLE ON PAGE
-      return res.status(400).render('signin', {
+      return res.status(404).render('signin', {
         title: 'Admin: ERROR',
         css: Styles.globalCSS,
         error: 'Sorry email address ' + email + " isn't in here",
@@ -68,7 +75,7 @@ exports.postSignInRoute = async (req, res) => {
     } else {
       const matchPwd = await bcrypt.compare(password, foundUser.password)
       if (!matchPwd) {
-        return res.status(400).render('signin', {
+        return res.status(401).render('signin', {
           title: 'Admin: ERROR',
           css: Styles.globalCSS,
           error: 'Sorry password is wrong. Please slow down and relax.',

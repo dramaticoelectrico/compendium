@@ -1,0 +1,9 @@
+extends ../tmpl.pug
+
+block main
+    h1 Tag page #{title}
+    form(action="/admin/tag" method="POST")
+      label(for="tagCategory") Add aditional Tags
+      input#tagCategory(type="text" name="tagCategory")
+      button(type="submit") Add
+      a(href="/admin") Cancel
