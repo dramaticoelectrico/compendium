@@ -105,7 +105,7 @@ exports.getEditPage = async (req, res, next) => {
   const getUser = await User.findById(req.user._id)
   const user = getUser.name
   res.render('admin/edit', {
-    title: 'Admin: Edit Item ' + gallery.title,
+    title: gallery.title,
     page: 'edit',
     css: Styles.globalCSS,
     gallery,

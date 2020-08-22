@@ -1,5 +1,31 @@
 extends ../tmpl.pug
-
 block main
-    h1 Edit page #{title}
+    h1 Edit: #{title}
+    figure
+        img(src=gallery.image.secure_url alt="")
+    form(action="/admin/edit" method="POST" enctype="multipart/form-data" accept="image/*")
+        input(type="hidden" name="galleryId" value=gallery._id )
+        label(for="image") Image
+        input#image(type="file" value="" name="image")
+        label(for="title") Title
+        input#title(type="text" name="title" value=gallery.title )
+        label Tags
+        if (locals.tags)
+            select(name="tag")
+                each item in locals.tags
+                    option(value=item.tag ) #{item.tag}
+        else
+            select(name="tag")
+                option(value=gallery.tag ) #{gallery.tag}
+            
+        label(for="description") description
+        textarea#description(name="description") #{gallery.description}
+        label
+            | Publish
+            input#radio1(type="radio" value="true" name="publish" checked=`${gallery.publish === true}`)
+        label
+            | Review
+            input#radio2(type="radio" value="false" name="publish" checked=`${gallery.publish === false}`)
+        input(type="submit" value="SUBMIT")
+        
     
