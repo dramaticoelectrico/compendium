@@ -2,6 +2,8 @@ extends ../tmpl.pug
 
 block main
     h1 Admin page
+    a(href="/admin/create") Add Entry
+    a(href="/admin/tag") Add Category Tag
     section
         - const renderBreakpoints = locals.templateFn
         each item in locals.gallery.length ? locals.gallery : ["Empty"]

@@ -55,7 +55,7 @@ function formatImageData(data) {
 exports.getAdminPage = async (req, res, next) => {
   const dbUser = User.findById(req.user._id)
   const dbTag = Tag.find()
-  const dbGallery = Gallery.find()
+  const dbGallery = Gallery.find().sort({ _id: -1 })
 
   const getUser = await dbUser
   const tags = await dbTag
@@ -88,13 +88,13 @@ exports.getAddItem = async (req, res, next) => {
 exports.getAddTag = async (req, res, next) => {
   const getUser = await User.findById(req.user._id)
   const user = getUser.name
-  const tag = await Tag.find()
+  const tags = await Tag.find()
   res.render('admin/tag', {
     title: 'Admin: add new Category Tag',
     page: 'tag',
     css: Styles.globalCSS,
     user,
-    tag,
+    tags,
   })
 }
 // edit/update items
@@ -108,6 +108,7 @@ exports.getEditPage = async (req, res, next) => {
     title: gallery.title,
     page: 'edit',
     css: Styles.globalCSS,
+    templateFn: Utils.getImages,
     gallery,
     user,
     tags,
@@ -123,6 +124,7 @@ exports.getDeleteItem = async (req, res, next) => {
     title: 'Admin: Delete Item ' + gallery.title,
     page: 'delete',
     css: Styles.globalCSS,
+    templateFn: Utils.getImages,
     gallery,
     user,
   })
@@ -197,7 +199,7 @@ exports.postFormAddTag = async (req, res, next) => {
   try {
     const tag = new Tag({ tag: tagCategory })
     await tag.save()
-    res.status(200).redirect('/admin/tag')
+    res.status(200).redirect('/admin')
   } catch (error) {
     next(error)
   }

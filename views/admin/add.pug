@@ -1,4 +1,27 @@
 extends ../tmpl.pug
 
 block main
-    h1 Add page #{title}
+    h1 #{title}
+    form(action="/admin/create" method="POST" enctype="multipart/form-data" accept="image/*")
+        label(for="image") Image
+        input#image(type="file" value="" name="image")
+        label(for="title") Title
+        input#title(type="text" name="title" value="" )
+        label Tags
+        if (locals.tags)
+            select(name="tag")
+                each item in locals.tags
+                    option(value=item.tag ) #{item.tag}
+        else
+            select(name="tag")
+                option(value=gallery.tag ) #{gallery.tag}
+            
+        label(for="description") description
+        textarea#description(name="description")
+        label
+            | Publish
+            input#radio1(type="radio" value="true" name="publish")
+        label
+            | Review
+            input#radio2(type="radio" value="false" name="publish" checked)
+        input(type="submit" value="SUBMIT")

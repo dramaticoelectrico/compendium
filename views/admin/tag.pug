@@ -1,9 +1,15 @@
 extends ../tmpl.pug
 
 block main
-    h1 Tag page #{title}
+    h1 #{title}
     form(action="/admin/tag" method="POST")
       label(for="tagCategory") Add aditional Tags
       input#tagCategory(type="text" name="tagCategory")
       button(type="submit") Add
-      a(href="/admin") Cancel
+    a(href="/admin") Cancel
+    if (locals.tags)
+      ul
+        each item in locals.tags
+          li #{item.tag}
+    else 
+      p No tags yet

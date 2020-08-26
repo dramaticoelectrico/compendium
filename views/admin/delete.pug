@@ -1,4 +1,15 @@
 extends ../tmpl.pug
 
 block main
-    h1 Delete page #{title}
+    h1 #{title}
+    - const renderBreakpoints = locals.templateFn
+    figure
+        img(sizes="(min-width: 1140px) 25vw, (min-width:500px) 50vw, 100vw"
+        srcset=`${renderBreakpoints(gallery.image.breakpoints)}`
+        src=gallery.image.secure_url
+        alt=gallery.description)
+    form(action="/admin/delete" method="POST")
+        label(for="galleryId") You want to delete #{gallery.title}
+        input#galleryId(type="hidden" name="galleryId" value=gallery._id)
+        button(type="submit") Yes
+    a(href="/admin") Cancel
