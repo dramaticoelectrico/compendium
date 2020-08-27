@@ -1,17 +1,17 @@
 extends tmpl.pug
 
 block main
-    h1 Sign in: #{title}
+    h1 #{title}
 
     if (locals.error)
         div.error(aria-prompt="alert") #{locals.error}
 
-    form(action="/auth/signin" method="post")
+    form#signin(class="form" action="/auth/signin" method="post")
       fieldset
         label(for="email") Email
         input#email(type="text" name="email")
       fieldset
         label(for="password") Password
         input#password(type="password" name="password")
-      button(type="submit") Enter
+      button(class="btn submit" type="submit") Sign in
     a(href="/") return to gallery
