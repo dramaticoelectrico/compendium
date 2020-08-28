@@ -10,7 +10,7 @@ exports.getRegisterRoute = (req, res) => {
 }
 exports.getSignInRoute = (req, res) => {
   res.render('signin', {
-    title: 'Sign in to Compendium',
+    title: 'Compendium!',
     css: Styles.globalCSS,
   })
 }
@@ -68,7 +68,7 @@ exports.postSignInRoute = async (req, res) => {
     if (!foundUser) {
       // TODO: ERROR HANDLE ON PAGE
       return res.status(404).render('signin', {
-        title: 'Admin: ERROR',
+        title: 'ERROR!',
         css: Styles.globalCSS,
         error: 'Sorry email address ' + email + " isn't in here",
       })
@@ -76,7 +76,7 @@ exports.postSignInRoute = async (req, res) => {
       const matchPwd = await bcrypt.compare(password, foundUser.password)
       if (!matchPwd) {
         return res.status(401).render('signin', {
-          title: 'Admin: ERROR',
+          title: 'ERROR!',
           css: Styles.globalCSS,
           error: 'Sorry password is wrong. Please slow down and relax.',
         })
