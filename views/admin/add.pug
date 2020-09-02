@@ -2,7 +2,7 @@ extends ../tmpl.pug
 
 block main
     h1 #{title}
-    form(action="/admin/create" method="POST" enctype="multipart/form-data" accept="image/*")
+    form(class="form" action="/admin/create" method="POST" enctype="multipart/form-data" accept="image/*")
         label(for="image") Image
         input#image(type="file" value="" name="image")
         label(for="title") Title
@@ -24,4 +24,4 @@ block main
         label
             | Review
             input#radio2(type="radio" value="false" name="publish" checked)
-        input(type="submit" value="SUBMIT")
+        input(class="btn submit" type="submit" value="SUBMIT")

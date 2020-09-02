@@ -2,16 +2,17 @@ extends ../tmpl.pug
 
 block main
     h1 Admin page
-    a(href="/admin/create") Add Entry
-    a(href="/admin/tag") Add Category Tag
+    a(class="btn admin" href="/admin/create") Add Entry
+    a(class="btn admin" href="/admin/tag") Add Category Tag
+    hr
     section
         - const renderBreakpoints = locals.templateFn
         each item in locals.gallery.length ? locals.gallery : ["Empty"]
-            figure
+            figure(class="admin-image")
                 img(sizes="(min-width: 1140px) 25vw, (min-width:500px) 50vw, 100vw"
                 srcset=`${renderBreakpoints(item.image.breakpoints)}`
                 src=item.image.secure_url
                 alt=item.description)
                 figcaption= item.title 
-            a(href="/admin/edit/" + item._id) Edit file
-            a(href="/admin/delete/" + item._id) Delete file
+            a(class="btn admin" href="/admin/edit/" + item._id) Edit file
+            a(class="btn warning" href="/admin/delete/" + item._id) Delete file
