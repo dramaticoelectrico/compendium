@@ -1,15 +1,15 @@
 nav
     ul
-    if locals.user
-        li Hello #{locals.user} !!!!
-        li
-            a(href="/") Gallery
-        li
-            a(href="/admin") Administrate
-        li
-            a(href="/logout") Logout
-    else 
-        li
-            a(href="/auth/signin") Sign in
-        li
-            a(href="/") Gallery
+        if locals.user
+            li Hello #{locals.user} !!!!
+            li
+                a(class="btn admin" href="/") Gallery
+            li
+                a(class="btn admin" href="/admin") Administrate
+            li
+                a(class="btn admin" href="/logout") Logout
+        else 
+            li
+                a(class="btn admin" href="/") Gallery
+            li
+                a(class="btn admin" href="/auth/signin") Sign in
