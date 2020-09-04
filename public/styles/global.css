@@ -137,3 +137,24 @@ input[type='password'] {
   font-size: 2rem;
   vertical-align: middle;
 }
+/** --------- GALLERY---------- **/
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}
+figure {
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+  height: fit-content;
+}
+figcaption {
+  color: var(--eggshell);
+  position: absolute;
+  width: 100%;
+  padding: 0.5em 0.8em;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+}

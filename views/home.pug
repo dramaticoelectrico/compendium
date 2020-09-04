@@ -2,7 +2,7 @@ extends tmpl.pug
 
 block main
     h1 #{title}
-    section
+    section(class="grid")
         - const renderBreakpoints = locals.templateFn
         each item in locals.gallery.length ? locals.gallery : ["Empty"]
             figure
