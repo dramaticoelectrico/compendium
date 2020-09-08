@@ -3,9 +3,10 @@ extends tmpl.pug
 block main
     h1 #{title}
     section(class="grid")
+        - let index = 0;
         - const renderBreakpoints = locals.templateFn
         each item in locals.gallery.length ? locals.gallery : ["Empty"]
-            figure
+            figure(class=`item-${index = (index < 4 ? index + 1 : 0)}`)
                 img(sizes="(min-width: 1140px) 25vw, (min-width:500px) 50vw, 100vw"
                 srcset=`${renderBreakpoints(item.image.breakpoints)}`
                 src=item.image.secure_url

@@ -14,6 +14,9 @@ html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+* {
+  box-sizing: border-box;
+}
 ::placeholder {
   color: gray;
 }
@@ -140,21 +143,27 @@ input[type='password'] {
 /** --------- GALLERY---------- **/
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 10px;
-  grid-auto-rows: minmax(100px, auto);
+  height: 250px;
 }
 figure {
   margin: 0;
-  overflow: hidden;
   position: relative;
-  height: fit-content;
+}
+
+figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 figcaption {
   color: var(--eggshell);
-  position: absolute;
   width: 100%;
   padding: 0.5em 0.8em;
   bottom: 0;
   background: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
