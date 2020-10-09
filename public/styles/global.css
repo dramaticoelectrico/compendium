@@ -31,21 +31,15 @@ a {
 nav {
   display: flex;
 }
-nav::before {
-  content: '';
-  display: block;
-  width: 20px;
-  height: 20px;
-  background: red;
-  border-radius: 50%;
-}
 nav ul {
   display: flex;
+  align-items: baseline;
   margin: 0;
   padding-left: 1em;
 }
 nav li {
   list-style: none;
+  color: var(--eggshell);
 }
 
 @media (-webkit-min-device-pixel-ratio: 2),
@@ -95,6 +89,7 @@ input[type='password'] {
   margin-bottom: 1em;
 }
 .btn {
+  display: inline-block;
   border: 1px solid transparent;
   padding: 0.3rem 1rem;
   font-weight: 500;
@@ -116,15 +111,27 @@ input[type='password'] {
   background-color: var(--red);
   color: var(--eggshell);
 }
+.nav-group {
+  padding: 0 1em;
+  border-bottom: 1px solid hsla(0, 0%, 82%, 0.925);
+  margin-bottom: 2em;
+  padding-bottom: 0.5em;
+}
 /** Admin **/
+.admin-tools {
+  display: flex;
+  justify-content: space-between;
+}
 .admin-image {
-  width: fit-content;
+  width: 350px;
+  height: 250px;
 }
 .admin-image img {
   border: 5px solid var(--eggshell);
 }
 .admin-image figcaption {
   padding: 1em;
+  color: var(--black);
   background: var(--eggshell);
 }
 /** Errors */
@@ -156,6 +163,15 @@ figure img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+figure span {
+  position: absolute;
+  display: inline-block;
+  color: var(--eggshell);
+  background: rgba(0, 0, 0, 0.7);
+  left: 0;
+  top: 0;
+  padding: 0.35em;
 }
 figcaption {
   color: var(--eggshell);
