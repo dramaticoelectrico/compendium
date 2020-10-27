@@ -2,7 +2,7 @@ extends ../tmpl.pug
 block main
     h1 Edit: #{title}
     - const renderBreakpoints = locals.templateFn
-    figure(class="admin-image")
+    figure(class="admin-image center")
         img(sizes="(min-width: 1140px) 25vw, (min-width:500px) 50vw, 100vw"
         srcset=`${renderBreakpoints(gallery.image.breakpoints)}`
         src=gallery.image.secure_url
@@ -12,20 +12,26 @@ block main
         fieldset
             label(for="image") Image
             input#image(type="file" value="" name="image")
+        fieldset(class="form-text")
+            legend Summary
             label(for="title") Title
             input#title(type="text" name="title" value=gallery.title )
-            label Tags
-            if (locals.tags)
-                select(name="tag")
-                    each item in locals.tags
-                        option(value=item.tag ) #{item.tag}
-            else
-                select(name="tag")
-                    option(value=gallery.tag ) #{gallery.tag}
-            
-            label(for="description") description
+        fieldset(class="form-select")
+            legend Select
+            label(for="tag") alt text
+                if (locals.tags)
+                    select(name="tag")
+                        each item in locals.tags
+                            option(value=item.tag ) #{item.tag}
+                else
+                    select(name="tag")
+                        option(value=gallery.tag ) #{gallery.tag}
+        fieldset(class="form-textbox") 
+            legend Description   
+            label(for="description") alt text
             textarea#description(name="description") #{gallery.description}
-        fieldset
+        fieldset(class="form-radio--group")
+            legend Status 
             label(for="radio1")
                 | Publish
                 input#radio1(type="radio" value="true" name="publish" checked=(gallery.publish === true ? "checked" : undefined))
