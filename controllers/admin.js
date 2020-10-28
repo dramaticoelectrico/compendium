@@ -32,7 +32,7 @@ function callbackCloudinary(error, result) {
   }
 }
 function formatImageData(data) {
-  const { secure_url, width, height, responsive_breakpoints } = data
+  const { secure_url, width, height, public_id, responsive_breakpoints } = data
   const formatBreakpoints = (arr) => {
     const newarr = []
     for (let item of arr) {
@@ -46,6 +46,7 @@ function formatImageData(data) {
   }
   return {
     secure_url,
+    public_id,
     width,
     height,
     breakpoints: formatBreakpoints(responsive_breakpoints[0]['breakpoints']),
@@ -85,6 +86,7 @@ exports.getAddItem = async (req, res, next) => {
     tags,
   })
 }
+// add category tag
 exports.getAddTag = async (req, res, next) => {
   const getUser = await User.findById(req.user._id)
   const user = getUser.name
@@ -187,7 +189,12 @@ exports.postFormEdit = async (req, res, next) => {
 }
 exports.postFormDelete = async (req, res, next) => {
   const id = req.body.galleryId
+  const imageId = req.body.imageId
+
   try {
+    if (imageId) {
+      await cloudinary.uploader.destroy(imageId, callbackCloudinary)
+    }
     await Gallery.deleteOne({ _id: id })
     res.status(200).redirect('/admin')
   } catch (error) {

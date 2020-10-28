@@ -21,6 +21,7 @@ const Gallery = new mongoose.Schema({
   },
   image: {
     secure_url: String,
+    public_id: String,
     width: Number,
     height: Number,
     breakpoints: [

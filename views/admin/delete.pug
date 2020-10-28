@@ -11,5 +11,6 @@ block main
     form(class="form" action="/admin/delete" method="POST")
         label(for="galleryId") You want to delete #{gallery.title}
         input#galleryId(type="hidden" name="galleryId" value=gallery._id)
+        input#imageId(type="hidden" name="imageId" value=gallery.image.public_id)
         button(class="btn warning" type="submit") Yes
     a(class="btn admin" href="/admin") Cancel
