@@ -2,6 +2,12 @@ extends tmpl.pug
 
 block main
     h1 #{title}
+    if (locals.tags)
+      nav
+        each item in locals.tags
+          a(class="btn" href="/category/" + String(item.tag).split(" ").join("-").toLowerCase()) #{item.tag}
+    else 
+      p No tags yet
     section(class="grid")
         - let index = 0;
         - let imageIndex = 1;
