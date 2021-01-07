@@ -15,7 +15,6 @@ exports.getHomePage = async (req, res, next) => {
           .filter((item) => item.includes('name='))[0]
           .split('=')[1]
       )
-
     res.render('home', {
       title: 'Compendium Pendulum',
       css: Styles.globalCSS,
