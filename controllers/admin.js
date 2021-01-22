@@ -135,6 +135,7 @@ exports.getDeleteItem = async (req, res, next) => {
 // post new entry
 exports.postFormData = async (req, res, next) => {
   const { title, description, tag, publish } = req.body
+  Config.imageSettings.public_id = title.split(' ').join('-')
   try {
     const imageResponse = await cloudinary.uploader.upload(
       req.file.path,
