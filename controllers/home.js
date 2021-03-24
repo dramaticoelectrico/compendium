@@ -2,7 +2,7 @@ const Gallery = require('../models/gallery')
 const Tags = require('../models/tag')
 const Utils = require('../utils/templateUtils')
 const Styles = require('../utils/globalStyles')
-const User = require('../models/user')
+
 exports.getHomePage = async (req, res, next) => {
   try {
     const gallery = await Gallery.find().sort({ _id: -1 })

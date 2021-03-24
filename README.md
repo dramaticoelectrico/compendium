@@ -1,6 +1,6 @@
 ## Compendium Gallery
 
-* connected to Cloudinary for images
+* Connected to Cloudinary for images
 * Pagination
 * Grid layout
 * Client side / Server side 
